@@ -6,10 +6,46 @@
 <link rel="stylesheet" href="/static/css/home.css">
 {% endblock %}
 
-
 {% block body %}
+<!-- Welcome Section -->
 <div class="container text-center mt-5">
     <h1 class="display-3 fw-bold">Welcome to Flowery!</h1>
     <p class="lead text-muted">Your destination for fresh and beautiful flowers.</p>
 </div>
+
+<!-- Popular Products Section -->
+<section class="popular-products mt-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Popular Products</h2>
+        <div class="row">
+            <!-- Product 1 -->
+            <div class="col-md-4">
+                <div class="product-card">
+                    <img src="/static/images/flower1.jpg" alt="Flower" class="img-fluid">
+                    <h3 class="product-title">Rose Bouquet</h3>
+                    <p class="product-price">$15.99</p>
+                    <a href="/product/rose-bouquet" class="btn btn-primary">View Details</a>
+                </div>
+            </div>
+            <!-- Product 2 -->
+            <div class="col-md-4">
+                <div class="product-card">
+                    <img src="/static/images/pot1.jpg" alt="Pot" class="img-fluid">
+                    <h3 class="product-title">Decorative Pot</h3>
+                    <p class="product-price">$12.99</p>
+                    <a href="/product/decorative-pot" class="btn btn-primary">View Details</a>
+                </div>
+            </div>
+            <!-- Product 3 -->
+            <div class="col-md-4">
+                <div class="product-card">
+                    <img src="/static/images/garden-decor.jpg" alt="Garden Decor" class="img-fluid">
+                    <h3 class="product-title">Garden Decoration</h3>
+                    <p class="product-price">$25.99</p>
+                    <a href="/product/garden-decoration" class="btn btn-primary">View Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}

@@ -1,11 +1,10 @@
 body {
     background-color: #FFC1CC; /* Soft Pastel Pink */
     font-family: Arial, sans-serif;
-    color: #333; /* Neutral text color for readability */
+    color: #000000; /* Neutral text color for readability */
     margin: 0;
     padding: 0;
 }
-
 
 
 
@@ -110,4 +109,54 @@ p {
 
 
 
+
+
+
+
+
+
+.popular-products .product-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    background-color: #fff;
+}
+
+.popular-products .product-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.popular-products .product-card h3 {
+    margin-top: 15px;
+    font-size: 1.25rem;
+    color: #8e1f2c;  /* Matching the brand color */
+}
+
+.popular-products .product-card p {
+    font-size: 1.1rem;
+    color: #888;
+}
+
+.popular-products .product-card .btn {
+    margin-top: 15px;
+    background-color: #8e1f2c;  /* Button color matches the brand */
+    border-color: #8e1f2c;
+    color: #fff;  /* White text on the button */
+}
+
+.popular-products .product-card .btn:hover {
+    background-color: #7a1a2b;  /* Slightly darker on hover */
+    border-color: #7a1a2b;
+}
+
+.popular-products h2 {
+    color: #8e1f2c;  /* Heading color matches the brand */
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
 

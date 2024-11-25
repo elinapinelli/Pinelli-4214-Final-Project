@@ -1,7 +1,201 @@
 body {
     background-color: #FFC1CC; /* Soft Pastel Pink */
     font-family: Arial, sans-serif;
-    color: #333; /* Neutral text color for readability */
+    color: #000000; /* Neutral text color for readability */
     margin: 0;
     padding: 0;
+}
+
+
+
+
+
+
+/* Navbar Styling */
+.navbar {
+    background-color: #fce6f0; /* Light pastel pink */
+    border-bottom: 2px solid #8e1f2c; /* Accent border */
+    font-family: Arial, sans-serif;
+    padding: 0.5rem 1rem;
+}
+
+.navbar-brand {
+    color: #8e1f2c; /* Deep pink for branding */
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+.navbar-brand:hover {
+    color: #b31c3b; /* Slightly darker hover color */
+    text-decoration: none;
+}
+
+.navbar-nav .nav-link {
+    color: #8e1f2c; /* Deep pink for links */
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: #ffc1cc; /* Subtle pink background on hover */
+    color: #fff; /* White text on hover */
+    border-radius: 5px;
+}
+
+.navbar-nav .nav-link.active {
+    font-weight: bold;
+    background-color: #ffc1cc; /* Match hover effect */
+    color: #fff;
+    border-radius: 5px;
+}
+
+.navbar-text .nav-link {
+    color: #8e1f2c;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.navbar-text .nav-link:hover {
+    background-color: #8e1f2c; /* Deep pink hover for text links */
+    color: #fff;
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
+}
+
+/* Toggler Button for Mobile */
+.navbar-toggler {
+    border: none;
+    background-color: #ffc1cc; /* Matches navbar theme */
+}
+
+/* Navbar link spacing */
+.navbar-nav .nav-link {
+    margin-right: 15px; /* Space between links */
+    padding: 10px 15px; /* Padding inside links */
+    color: #8e1f2c;
+    transition: all 0.3s ease-in-out;
+    border-radius: 5px; /* Rounds the edges to prevent overlap */
+}
+
+/* Hover effect with spacing */
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    background-color: #ffc1cc; /* Subtle pink hover effect */
+    color: #fff; /* White text */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Adds separation shadow */
+}
+
+/* Ensure consistent spacing even on the last item */
+.navbar-nav .nav-link:last-child {
+    margin-right: 0;
+}
+
+
+
+
+
+
+
+
+
+
+/* General Page Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffe6e6; /* Light pink background */
+    margin: 0;
+    padding: 0;
+}
+
+/* Container Styling */
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff; /* White background */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Section */
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    font-size: 36px;
+    color: #8e1f2c; /* Professional red tone */
+    margin-bottom: 10px;
+}
+
+.header p {
+    font-size: 18px;
+    color: #555; /* Neutral gray for supporting text */
+}
+
+/* Section Styling */
+.section {
+    margin-bottom: 30px;
+}
+
+.section h2 {
+    font-size: 28px;
+    color: #8e1f2c;
+    border-bottom: 2px solid #8e1f2c;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+.section p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #444;
+    margin: 10px 0;
+}
+
+/* Features Grid */
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.feature {
+    text-align: center;
+    flex: 1 1 calc(50% - 20px); /* Two items per row */
+    padding: 20px;
+    border: 1px solid #8e1f2c; /* Matches the primary theme color */
+    border-radius: 8px;
+    background: #fce6cf; /* Subtle cream background */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature:hover {
+    transform: translateY(-5px); /* Subtle lift effect */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.feature img {
+    width: 80px;
+    margin-bottom: 10px;
+}
+
+.feature h3 {
+    font-size: 20px;
+    color: #8e1f2c;
+    margin-bottom: 10px;
+}
+
+.feature p {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Footer Section for Additional Spacing */
+.section:last-child {
+    margin-bottom: 0;
 }

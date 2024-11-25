@@ -1,13 +1,135 @@
 {% extends "base.html" %}
 
-{% block title %}About us{% endblock %}
+{% block title %}About Us{% endblock %}
 
 {% block header %}
 <link rel="stylesheet" href="/static/css/about.css">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #ffe6e6; /* Light pink background */
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .header {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #8e1f2c;
+    }
+
+    .header h1 {
+        font-size: 36px;
+        margin: 10px 0;
+    }
+
+    .header p {
+        font-size: 18px;
+        color: #555;
+    }
+
+    .section {
+        margin-bottom: 30px;
+    }
+
+    .section h2 {
+        font-size: 28px;
+        color: #8e1f2c;
+        margin-bottom: 10px;
+    }
+
+    .section p {
+        font-size: 16px;
+        line-height: 1.8;
+        color: #444;
+    }
+
+    .features {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: space-around;
+    }
+
+    .feature {
+        text-align: center;
+        flex: 1 1 45%;
+        padding: 20px;
+        border: 1px solid #8e1f2c;
+        border-radius: 8px;
+        background: #fce6cf;
+    }
+
+    .feature img {
+        width: 100px;
+        margin-bottom: 10px;
+    }
+
+    .feature h3 {
+        color: #8e1f2c;
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+</style>
 {% endblock %}
 
-
 {% block body %}
-<h2 class="myh2">About Page</h2>
-<p>This is the content of the about page.</p>
+<div class="container">
+    <div class="header">
+        <h1>Welcome to Flowery</h1>
+        <p>Your one-stop destination for everything your garden needs!</p>
+    </div>
+
+    <div class="section">
+        <h2>Who We Are</h2>
+        <p>
+            At Flowery, we believe in the magic of nature and the joy that a beautiful garden can bring. 
+            From fresh flowers to nutrient-rich soil, stylish pots, and unique garden decorations, we have everything you need to create a garden that’s truly yours. 
+            Based on our love for greenery and a commitment to quality, Flowery has become a trusted name for garden enthusiasts.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>Our Products</h2>
+        <div class="features">
+            <div class="feature">
+                <img src="/static/images/flower-icon.png" alt="Flowers">
+                <h3>Fresh Flowers</h3>
+                <p>Brighten your day with our hand-picked, vibrant flowers for every occasion.</p>
+            </div>
+            <div class="feature">
+                <img src="/static/images/soil-icon.png" alt="Soil">
+                <h3>Nutrient-Rich Soil</h3>
+                <p>Boost your garden’s health with our high-quality soil blends.</p>
+            </div>
+            <div class="feature">
+                <img src="/static/images/pot-icon.png" alt="Pots">
+                <h3>Stylish Pots</h3>
+                <p>Find the perfect pots to complement your plants and enhance your decor.</p>
+            </div>
+            <div class="feature">
+                <img src="/static/images/decoration-icon.png" alt="Decorations">
+                <h3>Garden Decorations</h3>
+                <p>Make your garden magical with our unique decorations and ornaments.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Our Vision</h2>
+        <p>
+            At Flowery, our vision is to make gardening accessible and enjoyable for everyone. 
+            We strive to inspire creativity and bring the beauty of nature closer to your home, one garden at a time.
+        </p>
+    </div>
+</div>
 {% endblock %}
