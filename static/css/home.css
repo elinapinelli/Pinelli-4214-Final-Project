@@ -1,0 +1,113 @@
+body {
+    background-color: #FFC1CC; /* Soft Pastel Pink */
+    font-family: Arial, sans-serif;
+    color: #333; /* Neutral text color for readability */
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+/* Navbar Styling */
+.navbar {
+    background-color: #fce6f0; /* Light pastel pink */
+    border-bottom: 2px solid #8e1f2c; /* Accent border */
+    font-family: Arial, sans-serif;
+    padding: 0.5rem 1rem;
+}
+
+.navbar-brand {
+    color: #8e1f2c; /* Deep pink for branding */
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+.navbar-brand:hover {
+    color: #b31c3b; /* Slightly darker hover color */
+    text-decoration: none;
+}
+
+.navbar-nav .nav-link {
+    color: #8e1f2c; /* Deep pink for links */
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: #ffc1cc; /* Subtle pink background on hover */
+    color: #fff; /* White text on hover */
+    border-radius: 5px;
+}
+
+.navbar-nav .nav-link.active {
+    font-weight: bold;
+    background-color: #ffc1cc; /* Match hover effect */
+    color: #fff;
+    border-radius: 5px;
+}
+
+.navbar-text .nav-link {
+    color: #8e1f2c;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.navbar-text .nav-link:hover {
+    background-color: #8e1f2c; /* Deep pink hover for text links */
+    color: #fff;
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
+}
+
+/* Toggler Button for Mobile */
+.navbar-toggler {
+    border: none;
+    background-color: #ffc1cc; /* Matches navbar theme */
+}
+
+/* Navbar link spacing */
+.navbar-nav .nav-link {
+    margin-right: 15px; /* Space between links */
+    padding: 10px 15px; /* Padding inside links */
+    color: #8e1f2c;
+    transition: all 0.3s ease-in-out;
+    border-radius: 5px; /* Rounds the edges to prevent overlap */
+}
+
+/* Hover effect with spacing */
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    background-color: #ffc1cc; /* Subtle pink hover effect */
+    color: #fff; /* White text */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Adds separation shadow */
+}
+
+/* Ensure consistent spacing even on the last item */
+.navbar-nav .nav-link:last-child {
+    margin-right: 0;
+}
+
+
+
+
+body {
+    background-color: #fce6f0; /* Soft pastel pink background */
+    font-family: 'Arial', sans-serif; /* Clean, modern font */
+}
+
+h1 {
+    font-family: 'Georgia', serif; /* Elegant serif font for headers */
+    color: #8e1f2c; /* Deep pink color for a floral touch */
+}
+
+p {
+    font-size: 1.2rem; /* Slightly larger text for readability */
+    color: #6c757d; /* Subtle muted color for the paragraph */
+}
+
+
+
+

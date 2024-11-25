@@ -1,0 +1,87 @@
+body {
+    background-color: #FFC1CC; /* Soft Pastel Pink */
+    font-family: Arial, sans-serif;
+    color: #333; /* Neutral text color for readability */
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+/* General styling for the form */
+.login-form {
+    max-width: 350px; /* Reduce max width to make it more compact */
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Labels */
+.form-label {
+    font-weight: 500;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+/* Form Inputs */
+.form-control {
+    padding: 10px;
+    font-size: 0.95rem; /* Slightly smaller font size for inputs */
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    transition: border-color 0.3s;
+}
+
+/* Focus effect for inputs */
+.form-control:focus {
+    border-color: #8e1f2c;
+    box-shadow: 0 0 0 0.2rem rgba(142, 31, 44, 0.25);
+}
+
+/* Submit button styling */
+.btn-primary {
+    background-color: #8e1f2c;
+    border-color: #8e1f2c;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+/* Button hover effect */
+.btn-primary:hover {
+    background-color: #9f2c3b;
+    border-color: #9f2c3b;
+}
+
+/* Register link styling */
+.register-link {
+    font-size: 0.85rem;
+    color: #555;
+}
+
+.register-link a {
+    color: #8e1f2c;
+    font-weight: 600;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+/* Add margin to create space between the navbar and the form */
+.login-form {
+    max-width: 350px;
+    margin: 50px auto 0 auto; /* 50px margin from the top to create space */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+
