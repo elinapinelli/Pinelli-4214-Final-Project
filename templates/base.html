@@ -23,12 +23,18 @@
             <a class="nav-link {% if request.path == '/' %}active{% endif %}" aria-current="page" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {% if request.path == '/products/' %}active{% endif %}" href="/products/">Products</a>
+            <a class="nav-link {% if request.path == '/products/' %}active{% endif %}" href="/products">Products</a>
           </li>
           <li class="nav-item">
             <a class="nav-link {% if request.path == '/about/' %}active{% endif %}" href="/about">About Us</a>
           </li>
+          <form method="POST" action="/search/" class="d-flex" role="search">
+            {% csrf_token %}
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="keyword">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
         </ul>
+        
         {% if user.is_authenticated %}
           <span class="navbar-text">
             <a class="nav-link" href="/accounts/logout">Logout</a>
