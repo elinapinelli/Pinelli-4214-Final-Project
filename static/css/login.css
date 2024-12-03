@@ -12,85 +12,125 @@ body {
 
 
 
-/* Navbar Styling */
+/* Navbar Background and Brand Styling */
 .navbar {
-    background-color: #fce6f0; /* Light pastel pink */
-    border-bottom: 2px solid #8e1f2c; /* Accent border */
-    font-family: Arial, sans-serif;
+    background-color: #fce6cf; /* Light mode background */
+    border-bottom: 2px solid #8e1f2c; /* Subtle professional border */
     padding: 0.5rem 1rem;
 }
 
 .navbar-brand {
-    color: #8e1f2c; /* Deep pink for branding */
+    color: #8e1f2c;
     font-weight: bold;
     font-size: 1.5rem;
     text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .navbar-brand:hover {
-    color: #b31c3b; /* Slightly darker hover color */
-    text-decoration: none;
+    color: #2f1e0c; /* Darker shade on hover */
 }
 
+/* Navbar Links */
 .navbar-nav .nav-link {
-    color: #8e1f2c; /* Deep pink for links */
-    font-size: 1rem;
+    color: #8e1f2c;
+    font-weight: 500;
     padding: 0.5rem 1rem;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    text-transform: capitalize;
+    transition: color 0.3s ease-in-out;
 }
 
 .navbar-nav .nav-link:hover {
-    background-color: #ffc1cc; /* Subtle pink background on hover */
-    color: #fff; /* White text on hover */
-    border-radius: 5px;
+    color: #2f1e0c; /* Darker shade on hover */
+    text-decoration: underline;
 }
 
+/* Active Link */
 .navbar-nav .nav-link.active {
-    font-weight: bold;
-    background-color: #ffc1cc; /* Match hover effect */
-    color: #fff;
+    color: white;
+    background-color: #8e1f2c;
     border-radius: 5px;
+    padding: 0.5rem 1rem;
 }
 
-.navbar-text .nav-link {
-    color: #8e1f2c;
-    font-size: 1rem;
-    font-weight: bold;
+/* Search Form Styling */
+.navbar-search {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 1rem; /* Adds space around the search form */
 }
 
-.navbar-text .nav-link:hover {
-    background-color: #8e1f2c; /* Deep pink hover for text links */
-    color: #fff;
-    padding: 0.2rem 0.5rem;
-    border-radius: 5px;
+.navbar-search form {
+    display: flex;
+    width: 100%;
+    max-width: 400px; /* Limits the width of the search form */
 }
 
-/* Toggler Button for Mobile */
-.navbar-toggler {
+.navbar-search input.form-control {
+    flex-grow: 1;
+    border-radius: 0.25rem 0 0 0.25rem;
+    border: 2px solid #8e1f2c;
+    padding: 0.5rem;
+}
+
+.navbar-search input.form-control:focus {
+    outline: none;
+    box-shadow: 0 0 5px #8e1f2c;
+}
+
+.navbar-search button {
+    background-color: #8e1f2c;
+    color: white;
     border: none;
-    background-color: #ffc1cc; /* Matches navbar theme */
+    border-radius: 0 0.25rem 0.25rem 0;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-/* Navbar link spacing */
-.navbar-nav .nav-link {
-    margin-right: 15px; /* Space between links */
-    padding: 10px 15px; /* Padding inside links */
+.navbar-search button:hover {
+    background-color: #2f1e0c;
+    color: #fce6cf;
+}
+
+/* Navbar Text (User Profile and Login Links) */
+.navbar-text a {
     color: #8e1f2c;
-    transition: all 0.3s ease-in-out;
-    border-radius: 5px; /* Rounds the edges to prevent overlap */
+    text-decoration: none;
+    font-weight: 500;
 }
 
-/* Hover effect with spacing */
-.navbar-nav .nav-link:hover,
-.navbar-nav .nav-link.active {
-    background-color: #ffc1cc; /* Subtle pink hover effect */
-    color: #fff; /* White text */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Adds separation shadow */
+.navbar-text a:hover {
+    color: #2f1e0c;
+    text-decoration: underline;
 }
 
-/* Ensure consistent spacing even on the last item */
-.navbar-nav .nav-link:last-child {
-    margin-right: 0;
+/* Navbar Toggler */
+.navbar-toggler {
+    border: 2px solid #8e1f2c;
+}
+
+.navbar-toggler-icon {
+    background-color: #8e1f2c;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .navbar-nav .nav-link {
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .navbar-text {
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .navbar-search {
+        margin: 1rem 0;
+    }
 }
 
 

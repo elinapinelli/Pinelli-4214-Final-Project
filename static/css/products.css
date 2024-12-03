@@ -1,74 +1,273 @@
+/* General Page Styling */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     background-color: #ffe6e6; /* Light pink background */
     margin: 0;
     padding: 0;
 }
 
+/* General container styling */
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
     padding: 20px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.header {
+/* Products section styling */
+.products {
     text-align: center;
-    margin-bottom: 30px;
-    color: #8e1f2c;
 }
 
-.header h1 {
-    font-size: 36px;
-    margin: 10px 0;
+.products h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
 }
 
-.header p {
-    font-size: 18px;
-    color: #555;
-}
-
-.section {
-    margin-bottom: 30px;
-}
-
-.section h2 {
-    font-size: 28px;
-    color: #8e1f2c;
-    margin-bottom: 10px;
-}
-
-.section p {
-    font-size: 16px;
-    line-height: 1.8;
-    color: #444;
-}
-
-.features {
-    display: flex;
-    flex-wrap: wrap;
+/* Product list grid - 3 products per row */
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
     gap: 20px;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
 }
 
-.feature {
-    text-align: center;
-    flex: 1 1 45%;
-    padding: 20px;
-    border: 1px solid #8e1f2c;
+/* Individual product card styling */
+.product-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
     border-radius: 8px;
-    background: #fce6cf;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    max-width: 300px; /* Limit max width of cards */
+    margin: 0 auto; /* Center the cards within the grid */
 }
 
-.feature img {
-    width: 100px;
+/* Hover effect for product card */
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Image styling - limit size */
+.product-card img {
+    width: 100%;
+    height: 200px; /* Fix height to avoid huge images */
+    object-fit: cover;
+    border-radius: 5px;
     margin-bottom: 10px;
 }
 
-.feature h3 {
+/* Product title styling */
+.product-card h3 {
+    font-size: 1.25rem;
+    color: #444;
+    margin-bottom: 10px;
+}
+
+/* Price styling */
+.product-card p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+/* Button styling */
+.product-card .btn {
+    text-decoration: none;
+    color: #fff;
+    background-color: #8e1f2c; /* Your preferred color */
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.product-card .btn:hover {
+    background-color: #720f20;
+}
+
+/* Dropdown Button Styling */
+.btn-group .btn {
+    background-color: #8e1f2c; /* Primary color */
+    border-color: #8e1f2c; /* Match border with button */
+    color: #fff; /* Text color */
+    font-weight: 600; /* Make the button text bold */
+    text-transform: uppercase; /* Capitalize button text */
+    padding: 0.5rem 1rem; /* Padding to increase size */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s, border-color 0.3s; /* Smooth transition on hover */
+}
+
+.btn-group .btn:hover {
+    background-color: #720f20; /* Darker shade on hover */
+    border-color: #720f20; /* Match border color */
+    color: #fff;
+}
+
+/* Dropdown Menu Styling */
+.dropdown-menu {
+    background-color: #fcc3ec; /* Light background for dropdown */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 0.5rem 0; /* Space out items a little */
+    margin-top: 5px; /* Small margin for better spacing */
+    border: 1px solid #ddd; /* Subtle border */
+    width: auto; /* Allow the dropdown to expand with its content */
+    min-width: 200px; /* Ensure a minimum width */
+}
+
+/* Dropdown Item Styling */
+.dropdown-menu .dropdown-item {
+    color: #333; /* Dark text for better readability */
+    font-weight: 500; /* Slightly bold items */
+    padding: 0.75rem 1.25rem; /* Increase padding for better touch targets */
+    transition: background-color 0.3s; /* Smooth background color change on hover */
+    white-space: nowrap; /* Prevent text wrapping */
+    max-width: 300px; /* Ensure max width for dropdown items */
+    overflow: hidden; /* Hide overflow */
+    text-overflow: ellipsis; /* Use ellipsis for overflow text */
+}
+
+/* Dropdown Item Hover Effect */
+.dropdown-menu .dropdown-item:hover {
+    background-color: #8e1f2c; /* Highlight with primary color */
+    color: #fff; /* White text on hover */
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Navbar Background and Brand Styling */
+.navbar {
+    background-color: #fce6cf; /* Light mode background */
+    border-bottom: 2px solid #8e1f2c; /* Subtle professional border */
+    padding: 0.5rem 1rem;
+}
+
+.navbar-brand {
     color: #8e1f2c;
-    font-size: 20px;
-    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.navbar-brand:hover {
+    color: #2f1e0c; /* Darker shade on hover */
+}
+
+/* Navbar Links */
+.navbar-nav .nav-link {
+    color: #8e1f2c;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    text-transform: capitalize;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #2f1e0c; /* Darker shade on hover */
+    text-decoration: underline;
+}
+
+/* Active Link */
+.navbar-nav .nav-link.active {
+    color: white;
+    background-color: #8e1f2c;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+}
+
+/* Search Form Styling */
+.navbar-search {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 1rem; /* Adds space around the search form */
+}
+
+.navbar-search form {
+    display: flex;
+    width: 100%;
+    max-width: 400px; /* Limits the width of the search form */
+}
+
+.navbar-search input.form-control {
+    flex-grow: 1;
+    border-radius: 0.25rem 0 0 0.25rem;
+    border: 2px solid #8e1f2c;
+    padding: 0.5rem;
+}
+
+.navbar-search input.form-control:focus {
+    outline: none;
+    box-shadow: 0 0 5px #8e1f2c;
+}
+
+.navbar-search button {
+    background-color: #8e1f2c;
+    color: white;
+    border: none;
+    border-radius: 0 0.25rem 0.25rem 0;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.navbar-search button:hover {
+    background-color: #2f1e0c;
+    color: #fce6cf;
+}
+
+/* Navbar Text (User Profile and Login Links) */
+.navbar-text a {
+    color: #8e1f2c;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.navbar-text a:hover {
+    color: #2f1e0c;
+    text-decoration: underline;
+}
+
+/* Navbar Toggler */
+.navbar-toggler {
+    border: 2px solid #8e1f2c;
+}
+
+.navbar-toggler-icon {
+    background-color: #8e1f2c;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .navbar-nav .nav-link {
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .navbar-text {
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .navbar-search {
+        margin: 1rem 0;
+    }
 }

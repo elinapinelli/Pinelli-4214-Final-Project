@@ -4,23 +4,48 @@
 
 {% block header %}
 <link rel="stylesheet" href="/static/css/products.css">
+<!-- <script src="/static/js/products.js"></script> -->
 {% endblock %}
 
 {% block body %}
-<div class="section">
-    <h2>Our Products</h2>
-    <div class="features">
-    <!-- I loop inside the products that I have in my database -->
-    {% for product in products%}
-        <div class="feature">
-            <!-- I put the images from my database in the static folder -->
-            
-            <img src="/{{product.image}}">
-            <h3>{{product.title}}</h3>
-            <p>Price: {{product.price}} €</p>
-            <a href="/product/{{product.id}}" class="btn btn-primary">View Details</a>
+<div class="container">
+    <div class="products">
+        <h2>Our Products</h2>
+        <div id="categories" class="btn-group me-2">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #8e1f2c; border-color: #8e1f2c;">
+                Categories
+            </button>
+            <ul class="dropdown-menu">
+                {% for category in categories %}
+                <!-- i put .0 because it ia an array of a value -->
+                    <li><button class="dropdown-item" data-filter="{{category.0}}" type="button">{{category.0}}</button></li>
+                {% endfor %}
+               
+            </ul>
         </div>
-    {% endfor %}
+        <div id="subcategories" class="btn-group me-2">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #8e1f2c; border-color: #8e1f2c;">
+                Sub Categories
+            </button>
+            <ul class="dropdown-menu">
+                {% for sub in sub_categories %}
+                <!-- i put .0 because it ia an array of a value -->
+                    <li><button class="dropdown-item" data-filter="{{sub.0}}" type="button">{{sub.0}}</button></li>
+                {% endfor %}
+               
+            </ul>
+        </div>
+        <div class="product-list">
+            <!-- Loop through the products in the database -->
+            {% for product in products %}
+            <div class="product-card">
+                <img src="/{{ product.image }}" alt="{{ product.title }}">
+                <h3>{{ product.title }}</h3>
+                <p>Price: {{ product.price }} €</p>
+                <a href="/product/{{ product.id }}" class="btn btn-primary">View Details</a>
+            </div>
+            {% endfor %}
+        </div>
     </div>
 </div>
 

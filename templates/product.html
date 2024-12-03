@@ -3,32 +3,40 @@
 {% block title %}Product{% endblock %}
 
 {% block header %}
-<link rel="stylesheet" href="/static/css/products.css">
+<link rel="stylesheet" href="/static/css/product.css">
 {% endblock %}
 
 {% block body %}
 <div class="section">
-    <h2>Details For {{product.title}} :</h2>
     <div class="features">
-    <!-- I loop inside the products that I have in my database -->
-    
-    <div class="feature">
-        <!-- I put the images from my database in the static folder -->
-        
-        <img src="/{{product.image}}">
-        <h3>{{product.title}}</h3>
-        <p>Price: {{product.price}} €</p>
-        {% if product.indoors %}
-            <p>Indoors</p>
-        {% else %}
-            <p>Outdoors</p>
-        {% endif %}
-        <p>Category: {{product.category}}</p>
-        <p>SubCategory: {{product.sub_category}}</p>
-        <p>Description: {{product.description}}</p>
-    </div>
-    
+        <h2>{{ product.title }}</h2> <!-- Title centered in white background -->
+
+        <div class="feature">
+            <!-- Product Image -->
+            <div class="feature-image">
+                <img src="/{{ product.image }}" alt="{{ product.title }}">
+            </div>
+
+            <!-- Product Information -->
+            <div class="feature-info">
+                <p class="price"><strong>Price:</strong> {{ product.price }} €</p>
+                <p class="type">
+                    {% if product.indoors %}
+                        Indoors
+                    {% else %}
+                        Outdoors
+                    {% endif %}
+                </p>
+                <p><strong>Category:</strong> {{ product.category }}</p>
+                <p><strong>SubCategory:</strong> {{ product.sub_category }}</p>
+            </div>
+        </div>
+
+        <!-- Description Section -->
+        <div class="description">
+            <p><strong>Description:</strong></p>
+            <p>{{ product.description|linebreaksbr }}</p>
+        </div>
     </div>
 </div>
-
 {% endblock %}
