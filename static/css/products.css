@@ -63,14 +63,14 @@ body {
 /* Product title styling */
 .product-card h3 {
     font-size: 1.25rem;
-    color: #444;
+    color: #000000;
     margin-bottom: 10px;
 }
 
 /* Price styling */
 .product-card p {
     font-size: 1rem;
-    color: #666;
+    color: #000000;
     margin-bottom: 15px;
 }
 
@@ -85,8 +85,9 @@ body {
 }
 
 .product-card .btn:hover {
-    background-color: #720f20;
+    background-color: #a83145;
 }
+/* #720f20 */
 
 /* Dropdown Button Styling */
 .btn-group .btn {

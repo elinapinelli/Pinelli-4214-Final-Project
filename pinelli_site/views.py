@@ -16,12 +16,12 @@ def about(request):#sinartisi pou servirei tin kentriki selida tou site
 
 def products(request):#sinartisi pou servirei tin products selida tou site
     product_list=Product.objects.all()#pairno ta products apo database
-    unique_categories=Product.objects.values_list("category").distinct() #i take the unique categories and i take them only one time using the distinct
-    unique_subcategories=Product.objects.values_list("sub_category").distinct()
     
+    # I convert the data of the products from django to the list in order to pass to javascript
+    products=[{"id":product.id,"title":product.title,"price":product.price,"description":product.description,"category":product.category, "sub_category":product.sub_category, "indoors": product.indoors, "image": product.image.url } for product in product_list]
     
-    #i give them to html
-    return render(request,"products.html",{"products":product_list,"categories":unique_categories,"sub_categories":unique_subcategories})
+    #i give them to html and json.dumps converts the list to string
+    return render(request,"products.html",{"products":product_list,"products_str":json.dumps(products)})
 
 def product(request,id):#sinartisi pou servirei tin products selida tou site
     product_by_id=Product.objects.get(id=id)#i take from my database the id that the URL has    
@@ -36,7 +36,10 @@ def search(request):#sinartisi pou servirei tin products selida tou site
         product_list=Product.objects.filter(indoors=False)  
     else:
         product_list=Product.objects.filter(Q(title__icontains=keyword) | Q(description__icontains=keyword) | Q(category__icontains=keyword) | Q(sub_category__icontains=keyword) )
-    return render(request,"products.html",{"products":product_list})
+    # I convert the data of the products from django to the list in order to pass to javascript
+    products=[{"id":product.id,"title":product.title,"price":product.price,"description":product.description,"category":product.category, "sub_category":product.sub_category, "indoors": product.indoors, "image": product.image.url } for product in product_list]
+    
+    return render(request,"products.html",{"products":product_list,"products_str":json.dumps(products)})
 
 def order(request):#sinartisi pou servirei tin kentriki selida tou site
     return render(request,"order.html")

@@ -4,7 +4,7 @@
 
 {% block header %}
 <link rel="stylesheet" href="/static/css/products.css">
-<!-- <script src="/static/js/products.js"></script> -->
+<script src="/static/js/products.js"></script>
 {% endblock %}
 
 {% block body %}
@@ -15,11 +15,8 @@
             <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #8e1f2c; border-color: #8e1f2c;">
                 Categories
             </button>
-            <ul class="dropdown-menu">
-                {% for category in categories %}
-                <!-- i put .0 because it ia an array of a value -->
-                    <li><button class="dropdown-item" data-filter="{{category.0}}" type="button">{{category.0}}</button></li>
-                {% endfor %}
+            <ul id="categories_ul" class="dropdown-menu">
+                
                
             </ul>
         </div>
@@ -27,15 +24,13 @@
             <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #8e1f2c; border-color: #8e1f2c;">
                 Sub Categories
             </button>
-            <ul class="dropdown-menu">
-                {% for sub in sub_categories %}
-                <!-- i put .0 because it ia an array of a value -->
-                    <li><button class="dropdown-item" data-filter="{{sub.0}}" type="button">{{sub.0}}</button></li>
-                {% endfor %}
-               
+            <ul id="subcategories_ul" class="dropdown-menu">
+             
             </ul>
         </div>
-        <div class="product-list">
+        <p>Category:</p><p id="sel_cat">All</p>
+        <p>Sub Category:</p><p id="sel_sub_cat">All</p>
+        <div id="product-list" class="product-list">
             <!-- Loop through the products in the database -->
             {% for product in products %}
             <div class="product-card">
@@ -48,5 +43,11 @@
         </div>
     </div>
 </div>
+<script>
+    // i have this script here because I want to pass the products in javascript and there is no other way 
+    var products_l=JSON.parse('{{ products_str|escapejs }}')
+    // the espapejs is for when parsing the data string and it gives errors
+    // console.log(products_l)
+</script>
 
 {% endblock %}

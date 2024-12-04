@@ -130,6 +130,56 @@
 
 
 
+/* Quantity and Total Price Section */
+.quantity-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.quantity-section label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #555;
+}
+
+.quantity-section .quantity-input {
+    margin-top: 5px;
+    padding: 5px;
+    width: 60px;
+    font-size: 1rem;
+    border: 1px solid #8e1f2c;
+    border-radius: 5px;
+}
+
+.quantity-section p {
+    font-size: 1.2rem;
+    color: #333;
+    margin-top: 10px;
+}
+
+.quantity-section .add-to-cart {
+    margin-top: 10px;
+    background-color: #8e1f2c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.quantity-section .add-to-cart:hover {
+    background-color: #2f1e0c;
+}
+
+
+
+
+
+
 
 
 
