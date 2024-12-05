@@ -58,19 +58,24 @@ def cart_view(request):
     cart = request.session.get('cart', {})
     cart_items = []
     total_price = 0
+    total_quantity = 0  # To store the total quantity of all products
 
     for product_id, quantity in cart.items():
         product = Product.objects.get(id=product_id)
         cart_items.append({
             'product': product,
             'quantity': quantity,
+            'total_price': product.price * quantity,  # Total price for this item
         })
         total_price += product.price * quantity
+        total_quantity += quantity  # Add the quantity of this product to total quantity
 
     return render(request, 'order.html', {
         'cart': cart_items,
         'total_price': total_price,
+        'total_quantity': total_quantity,  # Passing total quantity to the template
     })
+
 
 def remove_from_cart(request, product_id):
     cart = request.session.get('cart', {})
