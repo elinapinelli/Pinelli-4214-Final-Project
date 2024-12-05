@@ -44,6 +44,16 @@ def search(request):#sinartisi pou servirei tin products selida tou site
 def order(request):#sinartisi pou servirei tin kentriki selida tou site
     return render(request,"order.html")
 
+def add_to_cart(request, product_id):
+    quantity = int(request.POST.get('quantity', 1))
+    cart = request.session.get('cart', {})
+    if product_id in cart:
+        cart[product_id] += quantity
+    else:
+        cart[product_id] = quantity
+    request.session['cart'] = cart
+    return redirect('cart_view')
+
 def cart_view(request):
     cart = request.session.get('cart', {})
     cart_items = []
@@ -62,21 +72,15 @@ def cart_view(request):
         'total_price': total_price,
     })
 
-def add_to_cart(request, product_id):
-    cart = request.session.get('cart', {})
-    cart[product_id] = cart.get(product_id, 0) + 1
-    request.session['cart'] = cart
-    return redirect('cart_view')  # Redirect to the cart view after adding an item
-
 def remove_from_cart(request, product_id):
     cart = request.session.get('cart', {})
     if product_id in cart:
         del cart[product_id]
     request.session['cart'] = cart
-    return redirect('cart_view')  # Redirect to the cart view after removing an item
+    return redirect('cart_view')
 
 def checkout(request):
-    request.session['cart'] = {}  # Clear the cart after checkout
+    request.session['cart'] = {}
     return render(request, 'checkout.html', {'message': 'Thank you for your purchase!'})
 
 @login_required

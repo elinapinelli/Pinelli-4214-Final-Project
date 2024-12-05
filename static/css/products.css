@@ -22,6 +22,77 @@ body {
     margin-bottom: 20px;
 }
 
+/* Filters styling */
+.filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Spacing between dropdowns */
+    margin-bottom: 20px; /* Space below the filters */
+}
+
+/* Dropdown Button Styling */
+.filters .btn-group .btn {
+    background-color: #8e1f2c; /* Primary color */
+    border-color: #8e1f2c; /* Match border with button */
+    color: #fff; /* Text color */
+    font-weight: 600; /* Make the button text bold */
+    text-transform: uppercase; /* Capitalize button text */
+    padding: 0.5rem 1rem; /* Padding to increase size */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s, border-color 0.3s; /* Smooth transition on hover */
+}
+
+.filters .btn-group .btn:hover {
+    background-color: #720f20; /* Darker shade on hover */
+    border-color: #720f20; /* Match border color */
+    color: #fff;
+}
+
+/* Dropdown Menu Styling */
+.filters .btn-group .dropdown-menu {
+    background-color: #fcc3ec; /* Light background for dropdown */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 0.5rem 0; /* Space out items a little */
+    margin-top: 5px; /* Small margin for better spacing */
+    border: 1px solid #ddd; /* Subtle border */
+    width: auto; /* Allow the dropdown to expand with its content */
+    min-width: 200px; /* Ensure a minimum width */
+}
+
+/* Dropdown Item Styling */
+.filters .btn-group .dropdown-menu .dropdown-item {
+    color: #333; /* Dark text for better readability */
+    font-weight: 500; /* Slightly bold items */
+    padding: 0.75rem 1.25rem; /* Increase padding for better touch targets */
+    transition: background-color 0.3s; /* Smooth background color change on hover */
+    white-space: nowrap; /* Prevent text wrapping */
+    max-width: 300px; /* Ensure max width for dropdown items */
+    overflow: hidden; /* Hide overflow */
+    text-overflow: ellipsis; /* Use ellipsis for overflow text */
+}
+
+/* Dropdown Item Hover Effect */
+.filters .btn-group .dropdown-menu .dropdown-item:hover {
+    background-color: #8e1f2c; /* Highlight with primary color */
+    color: #fff; /* White text on hover */
+    cursor: pointer;
+}
+
+/* Selected Categories styling */
+.selected-categories {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.selected-categories p {
+    display: inline-block;
+    margin: 0 5px;
+    font-weight: bold;
+    color: #8e1f2c;
+}
+
 /* Product list grid - 3 products per row */
 .product-list {
     display: grid;
@@ -87,70 +158,6 @@ body {
 .product-card .btn:hover {
     background-color: #a83145;
 }
-/* #720f20 */
-
-/* Dropdown Button Styling */
-.btn-group .btn {
-    background-color: #8e1f2c; /* Primary color */
-    border-color: #8e1f2c; /* Match border with button */
-    color: #fff; /* Text color */
-    font-weight: 600; /* Make the button text bold */
-    text-transform: uppercase; /* Capitalize button text */
-    padding: 0.5rem 1rem; /* Padding to increase size */
-    border-radius: 5px; /* Rounded corners */
-    transition: background-color 0.3s, border-color 0.3s; /* Smooth transition on hover */
-}
-
-.btn-group .btn:hover {
-    background-color: #720f20; /* Darker shade on hover */
-    border-color: #720f20; /* Match border color */
-    color: #fff;
-}
-
-/* Dropdown Menu Styling */
-.dropdown-menu {
-    background-color: #fcc3ec; /* Light background for dropdown */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    padding: 0.5rem 0; /* Space out items a little */
-    margin-top: 5px; /* Small margin for better spacing */
-    border: 1px solid #ddd; /* Subtle border */
-    width: auto; /* Allow the dropdown to expand with its content */
-    min-width: 200px; /* Ensure a minimum width */
-}
-
-/* Dropdown Item Styling */
-.dropdown-menu .dropdown-item {
-    color: #333; /* Dark text for better readability */
-    font-weight: 500; /* Slightly bold items */
-    padding: 0.75rem 1.25rem; /* Increase padding for better touch targets */
-    transition: background-color 0.3s; /* Smooth background color change on hover */
-    white-space: nowrap; /* Prevent text wrapping */
-    max-width: 300px; /* Ensure max width for dropdown items */
-    overflow: hidden; /* Hide overflow */
-    text-overflow: ellipsis; /* Use ellipsis for overflow text */
-}
-
-/* Dropdown Item Hover Effect */
-.dropdown-menu .dropdown-item:hover {
-    background-color: #8e1f2c; /* Highlight with primary color */
-    color: #fff; /* White text on hover */
-    cursor: pointer;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* Navbar Background and Brand Styling */
 .navbar {
@@ -191,69 +198,6 @@ body {
     background-color: #8e1f2c;
     border-radius: 5px;
     padding: 0.5rem 1rem;
-}
-
-/* Search Form Styling */
-.navbar-search {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 1rem; /* Adds space around the search form */
-}
-
-.navbar-search form {
-    display: flex;
-    width: 100%;
-    max-width: 400px; /* Limits the width of the search form */
-}
-
-.navbar-search input.form-control {
-    flex-grow: 1;
-    border-radius: 0.25rem 0 0 0.25rem;
-    border: 2px solid #8e1f2c;
-    padding: 0.5rem;
-}
-
-.navbar-search input.form-control:focus {
-    outline: none;
-    box-shadow: 0 0 5px #8e1f2c;
-}
-
-.navbar-search button {
-    background-color: #8e1f2c;
-    color: white;
-    border: none;
-    border-radius: 0 0.25rem 0.25rem 0;
-    padding: 0.5rem 1rem;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.navbar-search button:hover {
-    background-color: #2f1e0c;
-    color: #fce6cf;
-}
-
-/* Navbar Text (User Profile and Login Links) */
-.navbar-text a {
-    color: #8e1f2c;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-.navbar-text a:hover {
-    color: #2f1e0c;
-    text-decoration: underline;
-}
-
-/* Navbar Toggler */
-.navbar-toggler {
-    border: 2px solid #8e1f2c;
-}
-
-.navbar-toggler-icon {
-    background-color: #8e1f2c;
 }
 
 /* Responsive Adjustments */

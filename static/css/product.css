@@ -1,8 +1,10 @@
-
-
-
-
-
+body {
+    background-color: #FFC1CC; /* Soft Pastel Pink */
+    font-family: Arial, sans-serif;
+    color: #000000; /* Neutral text color for readability */
+    margin: 0;
+    padding: 0;
+}
 
 
 /* Navbar Background and Brand Styling */
@@ -126,10 +128,6 @@
     }
 }
 
-
-
-
-
 /* Quantity and Total Price Section */
 .quantity-section {
     display: flex;
@@ -175,26 +173,6 @@
     background-color: #2f1e0c;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* General Styles for the Product Page */
 body {
     font-family: Arial, sans-serif;
@@ -202,15 +180,6 @@ body {
     margin: 0;
     padding: 0;
 }
-
-
-
-
-
-
-
-
-
 
 /* Section container for product details */
 .section {
@@ -255,7 +224,7 @@ body {
 /* Image container styling */
 .feature-image {
     margin-right: 20px; /* Space between image and text */
-    width: 250px; /* Set image width */
+    width: 400px; /* Increased width for a much bigger image */
 }
 
 .feature-image img {
@@ -331,6 +300,7 @@ p:first-child {
     }
 
     .feature-image img {
-        max-width: 200px; /* Adjust image size for smaller screens */
+        max-width: 350px; /* Adjust image size for smaller screens */
     }
 }
+

@@ -11,25 +11,28 @@
 <div class="container">
     <div class="products">
         <h2>Our Products</h2>
-        <div id="categories" class="btn-group me-2">
-            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #8e1f2c; border-color: #8e1f2c;">
-                Categories
-            </button>
-            <ul id="categories_ul" class="dropdown-menu">
-                
-               
-            </ul>
+        <div class="filters">
+            <div id="categories" class="btn-group">
+                <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    Categories
+                </button>
+                <ul id="categories_ul" class="dropdown-menu">
+                    <!-- Add category items here -->
+                </ul>
+            </div>
+            <div id="subcategories" class="btn-group">
+                <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    Sub Categories
+                </button>
+                <ul id="subcategories_ul" class="dropdown-menu">
+                    <!-- Add subcategory items here -->
+                </ul>
+            </div>
         </div>
-        <div id="subcategories" class="btn-group me-2">
-            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #8e1f2c; border-color: #8e1f2c;">
-                Sub Categories
-            </button>
-            <ul id="subcategories_ul" class="dropdown-menu">
-             
-            </ul>
+        <div class="selected-categories">
+            <p>Category:</p><p id="sel_cat">All</p>
+            <p>Sub Category:</p><p id="sel_sub_cat">All</p>
         </div>
-        <p>Category:</p><p id="sel_cat">All</p>
-        <p>Sub Category:</p><p id="sel_sub_cat">All</p>
         <div id="product-list" class="product-list">
             <!-- Loop through the products in the database -->
             {% for product in products %}
@@ -43,6 +46,7 @@
         </div>
     </div>
 </div>
+
 <script>
     // i have this script here because I want to pass the products in javascript and there is no other way 
     var products_l=JSON.parse('{{ products_str|escapejs }}')
