@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Add Product{% endblock %}
+
+{% block header %}
+<link rel="stylesheet" href="/static/css/register.css">
+
+{% endblock %}
+
+{% block body %}
+<div class="form-container">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2 class="form-title">Add Product</h2>
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" name="title" placeholder="Enter your title" required>
+        </div>
+        <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input type="number" step="0.1" class="form-control" id="price" name="price" placeholder="Enter your price" required>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <input type="text" class="form-control" id="description" name="description" placeholder="Enter your description" required>
+        </div>
+        <div class="mb-3">
+            <label for="category" class="form-label">Category</label>
+            <input type="text" class="form-control" id="category" name="category" placeholder="Enter your category" required>
+        </div>
+        <div class="mb-3">
+            <label for="sub_category" class="form-label">Sub Category</label>
+            <input type="text" class="form-control" id="sub_category" name="sub_category" placeholder="Enter your sub category" required>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-text">
+                <div>
+              <label for="indoors" class="form-label">Indoors</label>
+                </div>
+              <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Indoors" name="indoors">
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="image" class="form-image">Image</label>
+            <input type="file" class="form-control" id="image" name="image" required accept="image/*">   <!-- to choose only image  -->
+          
+        </div> 
+        
+        <button type="submit" class="btn btn-primary btn-submit">Sumbit</button>
+    </form>
+</div>
+
+{% endblock %}

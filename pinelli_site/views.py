@@ -27,6 +27,18 @@ def product(request,id):#sinartisi pou servirei tin products selida tou site
     product_by_id=Product.objects.get(id=id)#i take from my database the id that the URL has    
     return render(request,"product.html",{"product":product_by_id})
 
+def addproduct(request):
+    if request.method == 'POST':
+        title=request.POST["title"]
+        price=request.POST["price"]
+        description=request.POST["description"]
+        category=request.POST["category"]
+        sub_category=request.POST["sub_category"]
+        indoors=request.POST["indoors"]
+        image=request.POST["image"]
+    elif request.method == 'GET':
+        return render(request,"addproduct.html")
+
 def search(request):#sinartisi pou servirei tin products selida tou site
     # if the user search a word that includes indoors or outdoors it will search for True or False otherwise if the title, description, category and sub category contains the keyword 
     keyword=request.POST["keyword"]
@@ -79,8 +91,11 @@ def cart_view(request):
 
 def remove_from_cart(request, product_id):
     cart = request.session.get('cart', {})
-    if product_id in cart:
-        del cart[product_id]
+    print ("cc", product_id)
+    print(cart)
+    if product_id in cart.keys():
+        cart.pop(str(product_id))
+        print(cart)
     request.session['cart'] = cart
     return redirect('cart_view')
 

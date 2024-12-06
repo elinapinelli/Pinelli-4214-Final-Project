@@ -19,7 +19,7 @@
                     <p>Price: {{ item.product.price }} €</p>
                     <p>Quantity: {{ item.quantity }}</p>
                     <p>Total for this product: {{ item.total_price }} €</p>  <!-- Displaying total for this product -->
-                    <form method="POST" action="{% url 'remove_from_cart' item.product.id %}">
+                    <form method="POST" action="/cart/remove/{{ item.product.id }}/">
                         {% csrf_token %}
                         <button type="submit" class="btn">Remove</button>
                     </form>

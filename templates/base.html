@@ -28,10 +28,22 @@
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == '/about/' %}active{% endif %}" href="/about">About Us</a>
                     </li>
-                    <!-- Shopping Cart Link -->
+                    {% if user.is_authenticated and user.is_superuser %}
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == '/shopping-cart/' %}active{% endif %}" href="/order">Shopping Cart</a>
+                        <a class="nav-link {% if request.path == '/registerstaff/' %}active{% endif %}" href="/accounts/registerstaff">Register Staff</a>
                     </li>
+                    {% endif %}
+                    <!-- Shopping Cart Link -->
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/shopping-cart/' %}active{% endif %}" href="/cart">Shopping Cart</a>
+                    </li>
+                    {% endif %}
+                    {% if user.is_authenticated and user.is_staff  %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/addproduct/' %}active{% endif %}" href="/addproduct">Add Product</a>
+                    </li>
+                    {% endif %}
                 </ul>
     
                 <!-- Centered Search Form -->
