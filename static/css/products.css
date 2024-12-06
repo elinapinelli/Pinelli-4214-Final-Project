@@ -4,6 +4,7 @@ body {
     background-color: #ffe6e6; /* Light pink background */
     margin: 0;
     padding: 0;
+    padding-top: 60px; /* Space for navbar so content doesn't overlap */
 }
 
 /* General container styling */
@@ -159,60 +160,96 @@ body {
     background-color: #a83145;
 }
 
-/* Navbar Background and Brand Styling */
+
+/* Navbar Styles */
 .navbar {
-    background-color: #fce6cf; /* Light mode background */
-    border-bottom: 2px solid #8e1f2c; /* Subtle professional border */
-    padding: 0.5rem 1rem;
+    background-color: #ffffff; /* White background for a clean, minimal look */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    width: 100%; /* Ensure navbar spans the full width */
+    position: fixed; /* Fix navbar at the top */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Ensure navbar stays above content */
+    padding: 10px 0; /* Add padding for spacing */
 }
 
-.navbar-brand {
+/* Navbar Brand */
+.navbar-light .navbar-brand {
     color: #8e1f2c;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
-.navbar-brand:hover {
-    color: #2f1e0c; /* Darker shade on hover */
+.navbar-light .navbar-brand:hover {
+    color: #6b1420; /* Slightly darker on hover */
 }
 
-/* Navbar Links */
+/* Navbar links */
 .navbar-nav .nav-link {
-    color: #8e1f2c;
-    font-weight: 500;
-    padding: 0.5rem 1rem;
-    text-transform: capitalize;
-    transition: color 0.3s ease-in-out;
+    color: #333333; /* Dark grey for readability */
+    font-size: 1.1rem;
+    padding: 10px 15px;
+    transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 .navbar-nav .nav-link:hover {
-    color: #2f1e0c; /* Darker shade on hover */
-    text-decoration: underline;
+    color: #ffffff; /* White text on hover */
+    background-color: #8e1f2c; /* Accent color background on hover */
+    border-radius: 5px; /* Rounded corners for hover effect */
 }
 
-/* Active Link */
+/* Active link styling */
 .navbar-nav .nav-link.active {
-    color: white;
+    color: #ffffff;
     background-color: #8e1f2c;
-    border-radius: 5px;
-    padding: 0.5rem 1rem;
+    font-weight: bold;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .navbar-nav .nav-link {
-        text-align: center;
-        padding: 1rem;
-    }
+/* Navbar toggle button */
+.navbar-toggler {
+    border-color: #8e1f2c;
+}
 
-    .navbar-text {
-        margin-top: 10px;
-        text-align: center;
-    }
+.navbar-toggler-icon {
+    background-color: #8e1f2c;
+}
 
-    .navbar-search {
-        margin: 1rem 0;
-    }
+/* Profile and logout links in navbar */
+.navbar-text a {
+    color: #333333;
+    font-size: 1.1rem;
+    margin-right: 20px;
+    transition: color 0.3s ease;
+}
+
+.navbar-text a:hover {
+    color: #8e1f2c;
+}
+
+/* Search bar in navbar */
+.navbar .form-control {
+    border-radius: 20px;
+    border: 1px solid #8e1f2c;
+    box-shadow: none;
+    width: 250px; /* Adjust width */
+    padding: 8px 16px;
+}
+
+.navbar .form-control:focus {
+    border-color: #8e1f2c;
+    box-shadow: 0 0 0 0.2rem rgba(142, 31, 44, 0.25); /* Subtle focus effect */
+}
+
+.navbar .btn {
+    background-color: #8e1f2c;
+    color: white;
+    border-radius: 20px;
+    padding: 8px 20px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar .btn:hover {
+    background-color: #ac4452;
 }

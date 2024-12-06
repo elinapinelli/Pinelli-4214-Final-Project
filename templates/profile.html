@@ -3,10 +3,12 @@
 {% block title %}Profile{% endblock %}
 {% block header %}
 <link rel="stylesheet" href="/static/css/profile.css">
+
 {% endblock %}
 
 {% block body %}
-<div class="container mt-4">
+<!-- Add an ID to the body or a container to scope the profile page styles -->
+<div id="profile-page" class="container mt-4">
     <h2>Your Profile</h2>
     <form method="POST" action="{% url 'update_profile' %}">
         {% csrf_token %}

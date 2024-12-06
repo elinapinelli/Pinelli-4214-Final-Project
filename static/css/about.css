@@ -1,152 +1,99 @@
+/* General Body Styling */
 body {
     background-color: #FFC1CC; /* Soft Pastel Pink */
     font-family: Arial, sans-serif;
     color: #000000; /* Neutral text color for readability */
     margin: 0;
     padding: 0;
+    width: 100%; /* Ensure the body takes up full width */
+    min-height: 100vh; /* Prevent shrinking of body height */
+    box-sizing: border-box; /* Ensures padding and borders are included in element's width/height */
 }
 
-
-
-
-
-
-/* Navbar Background and Brand Styling */
+/* Navbar Styles */
 .navbar {
-    background-color: #fce6cf; /* Light mode background */
-    border-bottom: 2px solid #8e1f2c; /* Subtle professional border */
-    padding: 0.5rem 1rem;
+    background-color: #ffffff; /* White background for a clean, minimal look */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    width: 100%; /* Ensure navbar spans the full width */
 }
 
-.navbar-brand {
+.navbar-light .navbar-brand {
     color: #8e1f2c;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
-.navbar-brand:hover {
-    color: #2f1e0c; /* Darker shade on hover */
+.navbar-light .navbar-brand:hover {
+    color: #6b1420; /* Slightly darker on hover */
 }
 
-/* Navbar Links */
+/* Navbar links */
 .navbar-nav .nav-link {
-    color: #8e1f2c;
-    font-weight: 500;
-    padding: 0.5rem 1rem;
-    text-transform: capitalize;
-    transition: color 0.3s ease-in-out;
+    color: #333333; /* Dark grey for readability */
+    font-size: 1.1rem;
+    padding: 10px 15px;
+    transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 .navbar-nav .nav-link:hover {
-    color: #2f1e0c; /* Darker shade on hover */
-    text-decoration: underline;
+    color: #ffffff; /* White text on hover */
+    background-color: #8e1f2c; /* Accent color background on hover */
+    border-radius: 5px; /* Rounded corners for hover effect */
 }
 
-/* Active Link */
+/* Active link styling */
 .navbar-nav .nav-link.active {
-    color: white;
+    color: #ffffff;
     background-color: #8e1f2c;
-    border-radius: 5px;
-    padding: 0.5rem 1rem;
-}
-
-/* Search Form Styling */
-.navbar-search {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 1rem; /* Adds space around the search form */
-}
-
-.navbar-search form {
-    display: flex;
-    width: 100%;
-    max-width: 400px; /* Limits the width of the search form */
-}
-
-.navbar-search input.form-control {
-    flex-grow: 1;
-    border-radius: 0.25rem 0 0 0.25rem;
-    border: 2px solid #8e1f2c;
-    padding: 0.5rem;
-}
-
-.navbar-search input.form-control:focus {
-    outline: none;
-    box-shadow: 0 0 5px #8e1f2c;
-}
-
-.navbar-search button {
-    background-color: #8e1f2c;
-    color: white;
-    border: none;
-    border-radius: 0 0.25rem 0.25rem 0;
-    padding: 0.5rem 1rem;
     font-weight: bold;
-    cursor: pointer;
 }
 
-.navbar-search button:hover {
-    background-color: #2f1e0c;
-    color: #fce6cf;
-}
-
-/* Navbar Text (User Profile and Login Links) */
-.navbar-text a {
-    color: #8e1f2c;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-.navbar-text a:hover {
-    color: #2f1e0c;
-    text-decoration: underline;
-}
-
-/* Navbar Toggler */
+/* Navbar toggle button */
 .navbar-toggler {
-    border: 2px solid #8e1f2c;
+    border-color: #8e1f2c;
 }
 
 .navbar-toggler-icon {
     background-color: #8e1f2c;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .navbar-nav .nav-link {
-        text-align: center;
-        padding: 1rem;
-    }
-
-    .navbar-text {
-        margin-top: 10px;
-        text-align: center;
-    }
-
-    .navbar-search {
-        margin: 1rem 0;
-    }
+/* Profile and logout links in navbar */
+.navbar-text a {
+    color: #333333;
+    font-size: 1.1rem;
+    margin-right: 20px;
+    transition: color 0.3s ease;
 }
 
+.navbar-text a:hover {
+    color: #8e1f2c;
+}
 
+/* Search bar in navbar */
+.navbar .form-control {
+    border-radius: 20px;
+    border: 1px solid #8e1f2c;
+    box-shadow: none;
+}
 
+.navbar .form-control:focus {
+    border-color: #8e1f2c;
+    box-shadow: 0 0 0 0.2rem rgba(142, 31, 44, 0.25); /* Subtle focus effect */
+}
 
+.navbar .btn {
+    background-color: #8e1f2c;
+    color: white;
+    border-radius: 20px;
+    padding: 8px 20px;
+    transition: background-color 0.3s ease;
+}
 
-
-
-
-
-
-
-
-
-
-
-
+.navbar .btn:hover {
+    background-color: #ac4452;
+}
 
 /* General Page Styling */
 body {
@@ -154,6 +101,9 @@ body {
     background-color: #ffe6e6; /* Light pink background */
     margin: 0;
     padding: 0;
+    width: 100%; /* Full width */
+    min-height: 100vh; /* Ensure full height */
+    box-sizing: border-box;
 }
 
 /* Container Styling */
@@ -164,6 +114,7 @@ body {
     background: #fff; /* White background */
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Ensure container spans full width */
 }
 
 /* Header Section */
@@ -209,6 +160,7 @@ body {
     flex-wrap: wrap;
     gap: 20px;
     justify-content: space-between;
+    width: 100%; /* Ensure grid uses full width */
 }
 
 .feature {
@@ -219,6 +171,7 @@ body {
     border-radius: 8px;
     background: #fce6cf; /* Subtle cream background */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-width: 220px; /* Prevents shrinking of the feature box */
 }
 
 .feature:hover {
