@@ -93,7 +93,7 @@ def remove_from_cart(request, product_id):
     cart = request.session.get('cart', {})
     print ("cc", product_id)
     print(cart)
-    if product_id in cart.keys():
+    if str(product_id) in cart.keys():
         cart.pop(str(product_id))
         print(cart)
     request.session['cart'] = cart
