@@ -30,6 +30,12 @@
                 </p>
                 <p><strong>Category:</strong> {{ product.category }}</p>
                 <p><strong>SubCategory:</strong> {{ product.sub_category }}</p>
+                {% if user.is_authenticated and user.is_superuser %}
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    <button type="submit" class="add-to-cart">Delete</button>
+                </form>
+                {% endif %}
             </div>
         </div>
 

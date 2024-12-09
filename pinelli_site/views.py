@@ -5,6 +5,9 @@ from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from .forms import ProfileUpdateForm
 import json
+from django.conf import settings
+import os
+from django.contrib import messages
 
 # Create your views here.
 
@@ -24,20 +27,43 @@ def products(request):#sinartisi pou servirei tin products selida tou site
     return render(request,"products.html",{"products":product_list,"products_str":json.dumps(products)})
 
 def product(request,id):#sinartisi pou servirei tin products selida tou site
-    product_by_id=Product.objects.get(id=id)#i take from my database the id that the URL has    
-    return render(request,"product.html",{"product":product_by_id})
+    if request.method == 'POST':
+        product_by_id=Product.objects.get(id=id)#
+        product_by_id.delete()
+        messages.success(request,f"Product ({product_by_id.title}) deleted successfully")
+        return redirect("products")
+
+    if request.method == 'GET':
+        product_by_id=Product.objects.get(id=id)#i take from my database the id that the URL has    
+        return render(request,"product.html",{"product":product_by_id})
 
 def addproduct(request):
     if request.method == 'POST':
         title=request.POST["title"]
         price=request.POST["price"]
         description=request.POST["description"]
-        category=request.POST["category"]
-        sub_category=request.POST["sub_category"]
-        indoors=request.POST["indoors"]
-        image=request.POST["image"]
+        category=request.POST["category"].capitalize()#i capitalized the first letter it because if it is not capitalized it will make a new category
+        sub_category=request.POST["sub_category"].capitalize()
+        try:
+            indoors=request.POST["indoors"]#i try to take the ckecked indoors and if the user doesnt click it i take it as false
+        except:
+            indoors=False
+        image=request.FILES["image"]#because it is an file i take it from FILES
+        upload_folder = os.path.join(settings.BASE_DIR, 'static\images')#the folder i will save it
+        file_path=os.path.join(upload_folder,image.name)#where it will save it
+        if not os.path.exists(upload_folder):#if the folder doesnt exist create one in order to not have errors
+            os.makedirs(upload_folder)
+        with open(file_path, 'wb+') as destination: #i save the file using chunks that posted because the form i made send chunks
+            for chunk in image.chunks():
+                destination.write(chunk)
+        Product.objects.create(title=title,price=price,description=description,indoors=indoors,category=category,sub_category=sub_category,image="static/images/"+image.name)
+        messages.success(request,f"You add a product ({title}) successfully")
+        return  render(request,"addproduct.html")
+
     elif request.method == 'GET':
         return render(request,"addproduct.html")
+
+
 
 def search(request):#sinartisi pou servirei tin products selida tou site
     # if the user search a word that includes indoors or outdoors it will search for True or False otherwise if the title, description, category and sub category contains the keyword 
@@ -91,11 +117,8 @@ def cart_view(request):
 
 def remove_from_cart(request, product_id):
     cart = request.session.get('cart', {})
-    print ("cc", product_id)
-    print(cart)
     if str(product_id) in cart.keys():
-        cart.pop(str(product_id))
-        print(cart)
+        cart.pop(str(product_id))     
     request.session['cart'] = cart
     return redirect('cart_view')
 

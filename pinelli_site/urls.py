@@ -17,4 +17,5 @@ urlpatterns=[#pinakas pou tha baloume ola ta endpoints
     path('profile/', views.profile, name='profile'),
     path('profile/update/', views.update_profile, name='update_profile'),
     path('addproduct/', views.addproduct, name='addproduct'),
+    
 ]
