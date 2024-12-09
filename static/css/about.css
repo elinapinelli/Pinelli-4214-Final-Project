@@ -17,6 +17,12 @@ body {
     width: 100%; /* Ensure navbar spans the full width */
 }
 
+.navbar-brand {
+    color: #8e1f2c;
+    font-weight: bold;
+}
+
+
 .navbar-light .navbar-brand {
     color: #8e1f2c;
     font-weight: bold;
@@ -95,16 +101,6 @@ body {
     background-color: #ac4452;
 }
 
-/* General Page Styling */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #ffe6e6; /* Light pink background */
-    margin: 0;
-    padding: 0;
-    width: 100%; /* Full width */
-    min-height: 100vh; /* Ensure full height */
-    box-sizing: border-box;
-}
 
 /* Container Styling */
 .container {

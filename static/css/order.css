@@ -1,12 +1,10 @@
 /* General Body Styling */
 body {
-    background-color: #FFE6E6; /* Light pink background */
+    background-color: #FFC1CC; /* Light pink background */
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
-
-
 
 /* Shopping Cart Styling */
 .shopping-cart {
@@ -39,7 +37,7 @@ body {
 }
 
 .cart-item img {
-    max-width: 100px;
+    max-width: 200px; /* Increased size for a larger image */
     height: auto;
     border-radius: 8px;
 }
@@ -124,4 +122,97 @@ button {
 
 button:hover {
     background-color: #7A1A2B;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #ffffff; /* White background for a clean, minimal look */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    width: 100%; /* Ensure navbar spans the full width */
+}
+
+.navbar-brand {
+    color: #8e1f2c;
+    font-weight: bold;
+}
+
+.navbar-light .navbar-brand {
+    color: #8e1f2c;
+    font-weight: bold;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.navbar-light .navbar-brand:hover {
+    color: #6b1420; /* Slightly darker on hover */
+}
+
+/* Navbar links */
+.navbar-nav .nav-link {
+    color: #333333; /* Dark grey for readability */
+    font-size: 1.1rem;
+    padding: 10px 15px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffffff; /* White text on hover */
+    background-color: #8e1f2c; /* Accent color background on hover */
+    border-radius: 5px; /* Rounded corners for hover effect */
+}
+
+/* Active link styling */
+.navbar-nav .nav-link.active {
+    color: #ffffff;
+    background-color: #8e1f2c;
+    font-weight: bold;
+}
+
+/* Navbar toggle button */
+.navbar-toggler {
+    border-color: #8e1f2c;
+}
+
+.navbar-toggler-icon {
+    background-color: #8e1f2c;
+}
+
+/* Profile and logout links in navbar */
+.navbar-text a {
+    color: #333333;
+    font-size: 1.1rem;
+    margin-right: 20px;
+    transition: color 0.3s ease;
+}
+
+.navbar-text a:hover {
+    color: #8e1f2c;
+}
+
+/* Search bar in navbar */
+.navbar .form-control {
+    background-color: #ffffff; /* Set white background to distinguish from the form */
+    border-radius: 20px;
+    border: 1px solid #8e1f2c; /* Border color matches the navbar theme */
+    box-shadow: none;
+    color: #333333; /* Dark text for readability */
+}
+
+.navbar .form-control:focus {
+    background-color: #ffffff; /* Ensure it stays white on focus */
+    border-color: #8e1f2c; /* Border stays the same */
+    box-shadow: 0 0 0 0.2rem rgba(142, 31, 44, 0.25); /* Focus effect */
+}
+
+.navbar .btn {
+    background-color: #8e1f2c;
+    color: white;
+    border-radius: 20px;
+    padding: 8px 20px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar .btn:hover {
+    background-color: #ac4452;
 }

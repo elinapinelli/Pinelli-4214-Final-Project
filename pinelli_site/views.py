@@ -123,9 +123,41 @@ def remove_from_cart(request, product_id):
     return redirect('cart_view')
 
 def checkout(request):
-    request.session['cart'] = {}
-    return render(request, 'checkout.html', {'message': 'Thank you for your purchase!'})
+    cart = request.session.get('cart', {})
+    cart_items = []
+    total_price = 0
 
+    for product_id, quantity in cart.items():
+        product = Product.objects.get(id=product_id)
+        cart_items.append({
+            'product': product,
+            'quantity': quantity,
+            'total_price': product.price * quantity,  # Total price for this item
+        })
+        total_price += product.price * quantity
+
+    if request.method == 'POST':
+        street = request.POST.get('street')
+        city = request.POST.get('city')
+        zip_code = request.POST.get('zip_code')
+        card_number = request.POST.get('card_number')
+        expiry_date = request.POST.get('expiry_date')
+        cvv = request.POST.get('cvv')
+
+        # Add basic validation
+        if not (street and city and zip_code and card_number and expiry_date and cvv):
+            messages.error(request, 'Please fill in all required fields.')
+            return redirect('checkout')
+
+        # Simulate successful payment
+        request.session['cart'] = {}  # Clear the cart
+        messages.success(request, 'Thank you for your purchase!')
+        return redirect('home')
+
+    return render(request, 'checkout.html', {
+        'cart': cart_items,
+        'total_price': total_price,
+    })
 @login_required
 def profile(request):
     # Display the user's profile
