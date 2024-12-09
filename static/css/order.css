@@ -216,3 +216,27 @@ button:hover {
 .navbar .btn:hover {
     background-color: #ac4452;
 }
+
+
+/* Empty Cart Styling */
+.empty-cart-message {
+    text-align: center;
+    color: #8E1F2C; /* Brand color for consistency */
+    font-size: 1.5rem;
+    margin-top: 30px;
+    font-weight: bold;
+    padding: 20px;
+    border: 2px dashed #8E1F2C; /* Adding a dashed border to make it stand out */
+    border-radius: 8px;
+    background-color: #fce6cf; /* Subtle background to make it visually appealing */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+}
+
+/* Styling for "empty cart" message when it's inside the cart-items section */
+.cart-items p {
+    display: none; /* Hide the original message */
+}
+
+.cart-items .empty-cart-message {
+    display: block; /* Ensure the new styled message is visible */
+}

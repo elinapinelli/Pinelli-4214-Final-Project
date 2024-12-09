@@ -272,3 +272,26 @@ p:first-child {
 .navbar .btn:hover {
     background-color: #ac4452;
 }
+
+
+
+
+
+/* Specific Styles for the Delete button */
+.add-to-cart.delete {
+    background-color: #d9534f; /* Red color for delete action */
+    border: 1px solid #c9302c; /* Darker red border */
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-to-cart.delete:hover {
+    background-color: #c9302c; /* Darker red on hover */
+}
+
+/* Optional: To make the Delete button stand out more clearly */
+.add-to-cart.delete:active {
+    background-color: #ac2925; /* Darker red when clicked */
+}

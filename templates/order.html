@@ -29,7 +29,7 @@
             </div>
             {% endfor %}
             <div class="cart-summary">
-                <h3>Total Quantity: {{ total_quantity }}</h3>  <!-- Total quantity of all products -->
+                <h3>Total Quantity: {{ total_quantity }}</h3>
                 <h3>Total Price: {{ total_price }} €</h3>
                 <form method="POST" action="{% url 'checkout' %}">
                     {% csrf_token %}
@@ -37,7 +37,7 @@
                 </form>
             </div>
         {% else %}
-            <p>Your cart is empty!</p>
+            <p class="empty-cart-message">Your cart is empty!</p>
         {% endif %}
     </div>
 </div>
