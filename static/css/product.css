@@ -304,12 +304,14 @@ p:first-child {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     width: 100%;
     border-radius: 0.5rem;
-  }
-   
-  .star {
-    font-size: 10vh;
+}
+
+.star {
+    font-size: 2.5rem; /* Adjust size for better visibility */
     cursor: pointer;
-  }
+    color: #8e1f2c; /* Default color */
+    transition: color 0.3s ease, transform 0.2s ease;
+}
    
   .one {
     color: rgb(255, 0, 0);
@@ -330,3 +332,20 @@ p:first-child {
   .five {
     color: rgb(24, 159, 14);
   }
+
+
+  .update-button {
+    background-color: #c0878d; /* Your preferred accent color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.update-button:hover {
+    background-color: #2f1e0c; /* Slightly darker on hover */
+    transform: translateY(-2px); /* Subtle lift effect on hover */
+}

@@ -183,3 +183,11 @@ body {
 .register-link a:hover {
     text-decoration: underline;
 }
+
+.product-image {
+    max-width: 100%; /* Ensures it does not overflow its container */
+    height: auto;    /* Maintains aspect ratio */
+    max-height: 200px; /* Adjust this value to your preference */
+    display: block;  /* Ensures the image is displayed as a block element */
+    margin: 10px auto; /* Centers the image and adds spacing */
+}
