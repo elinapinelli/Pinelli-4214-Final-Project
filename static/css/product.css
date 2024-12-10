@@ -277,7 +277,7 @@ p:first-child {
 
 
 
-/* Specific Styles for the Delete button */
+/* Delete Button with Space Above */
 .add-to-cart.delete {
     background-color: #d9534f; /* Red color for delete action */
     border: 1px solid #c9302c; /* Darker red border */
@@ -285,32 +285,54 @@ p:first-child {
     font-size: 1rem;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin-top: 20px; /* Adds space above the delete button */
 }
 
 .add-to-cart.delete:hover {
     background-color: #c9302c; /* Darker red on hover */
+    transform: translateY(-2px); /* Slight upward lift effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
 }
 
-/* Optional: To make the Delete button stand out more clearly */
 .add-to-cart.delete:active {
     background-color: #ac2925; /* Darker red when clicked */
+    transform: translateY(1px); /* Slight downward press effect */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle inset shadow when active */
 }
 
+/* Stars Card Styling */
 .stars_card {
     max-width: 33rem;
-    background: #fff;
-    margin: 0 1rem;
-    padding: 1rem;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    background: #f9f9f9; /* Slightly off-white for a professional touch */
+    margin: 0 auto; /* Center the stars card */
+    padding: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Softer shadow for a cleaner look */
     width: 100%;
-    border-radius: 0.5rem;
+    border-radius: 1rem; /* Increased border radius for modern design */
+    text-align: center; /* Center the stars and text */
 }
 
+/* Star Styling */
 .star {
-    font-size: 2.5rem; /* Adjust size for better visibility */
+    font-size: 2.5rem; /* Keep the current size */
     cursor: pointer;
-    color: #8e1f2c; /* Default color */
+    color: #f0b9c0; /* Keep the existing color */
     transition: color 0.3s ease, transform 0.2s ease;
+    margin: 0 0.2rem; /* Add spacing between stars */
+}
+
+.star:hover {
+    transform: scale(1.2); /* Slight zoom effect on hover */
+}
+
+/* Output Text Styling */
+#output {
+    font-size: 1.2rem;
+    color: #333; /* Neutral text color for readability */
+    margin-top: 1rem;
+    font-weight: bold;
 }
    
   .one {
@@ -334,18 +356,25 @@ p:first-child {
   }
 
 
-  .update-button {
-    background-color: #c0878d; /* Your preferred accent color */
-    color: white;
+/* Update Button Styling */
+.update-button {
+    background-color: #bc5b15; /* Align with preferred color */
+    color: #fff; /* White text for contrast */
     border: none;
     padding: 10px 20px;
     font-size: 1rem;
-    border-radius: 5px;
+    border-radius: 5px; /* Slightly rounded corners */
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow for a polished look */
 }
 
 .update-button:hover {
-    background-color: #2f1e0c; /* Slightly darker on hover */
+    background-color: #8b2404; /* Slightly darker for hover effect */
     transform: translateY(-2px); /* Subtle lift effect on hover */
+}
+
+.update-button:active {
+    transform: translateY(1px); /* Pressed effect */
+    background-color: #8b2404; /* Slightly darker when clicked */
 }

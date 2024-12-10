@@ -139,25 +139,54 @@ def add_to_cart(request, product_id):
 
 def cart_view(request):
     cart = request.session.get('cart', {})
+    print("Cart contents:", cart)  # Debugging line
     cart_items = []
     total_price = 0
-    total_quantity = 0  # To store the total quantity of all products
+    total_quantity = 0
 
     for product_id, quantity in cart.items():
         product = Product.objects.get(id=product_id)
+        total_for_product = product.price * quantity
+        total_price += total_for_product
+        total_quantity += quantity
         cart_items.append({
             'product': product,
             'quantity': quantity,
-            'total_price': product.price * quantity,  # Total price for this item
+            'total_price': total_for_product,
         })
-        total_price += product.price * quantity
-        total_quantity += quantity  # Add the quantity of this product to total quantity
 
-    return render(request, 'order.html', {
+    context = {
         'cart': cart_items,
         'total_price': total_price,
-        'total_quantity': total_quantity,  # Passing total quantity to the template
+        'total_quantity': total_quantity,
+    }
+    return render(request, "order.html", context)
+
+def update_cart_quantity(request, product_id):
+    # Get cart from session
+    cart = request.session.get('cart', {})
+    
+    # Get the new quantity from POST
+    quantity = int(request.POST.get('quantity', 1))
+    
+    # Update cart quantity
+    if product_id in cart:
+        cart[product_id] = quantity  # Update the quantity
+    request.session['cart'] = cart  # Save the cart back to session
+
+    # Retrieve the product's price
+    product = get_object_or_404(Product, id=product_id)
+    total_price = product.price * quantity
+
+    # Return the updated price and quantity as JSON
+    return JsonResponse({
+        'status': 'success',
+        'new_quantity': quantity,
+        'new_total_price': total_price,
+        'product_price': product.price,
     })
+
+
 
 
 def remove_from_cart(request, product_id):

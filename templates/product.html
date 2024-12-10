@@ -62,7 +62,7 @@
                 {% endif %}
                 {% if user.is_authenticated and user.is_staff  %}
                 <a href="/updateproduct/{{ product.id }}">
-                    <button>Update</button>
+                    <button class="update-button">Update</button>
                 </a>
                 {% endif %}
             </div>
