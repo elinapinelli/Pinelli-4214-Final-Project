@@ -30,11 +30,40 @@
                 </p>
                 <p><strong>Category:</strong> {{ product.category }}</p>
                 <p><strong>SubCategory:</strong> {{ product.sub_category }}</p>
+                {% if user.is_authenticated %}
+                <div class="stars_card">
+                 
+                    
+                    <span onclick="rating_stars('{{ user.username }}','{{ product.id }}',1)"
+                          class="star">★
+                    </span>
+                    <span onclick="rating_stars('{{ user.username }}','{{ product.id }}',2)"
+                          class="star">★
+                    </span>
+                    <span onclick="rating_stars('{{ user.username }}','{{ product.id }}',3)"
+                          class="star">★
+                    </span>
+                    <span onclick="rating_stars('{{ user.username }}','{{ product.id }}',4)"
+                          class="star">★
+                    </span>
+                    <span onclick="rating_stars('{{ user.username }}','{{ product.id }}',5)"
+                          class="star">★
+                    </span>
+                    <h3 id="output">
+                          Rating is: 0/5
+                      </h3>
+                </div>
+                {% endif %}
                 {% if user.is_authenticated and user.is_superuser %}
                 <form method="POST" action="">
                     {% csrf_token %}
                     <button type="submit" class="add-to-cart delete">Delete</button>
                 </form>
+                {% endif %}
+                {% if user.is_authenticated and user.is_staff  %}
+                <a href="/updateproduct/{{ product.id }}">
+                    <button>Update</button>
+                </a>
                 {% endif %}
             </div>
         </div>

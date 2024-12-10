@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse #HttpResponse-> metatrepei ta keimena se html
-from .models import Product
+from django.http import HttpResponse,JsonResponse #HttpResponse-> metatrepei ta keimena se html
+from .models import Product,Rating
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from .forms import ProfileUpdateForm
@@ -28,7 +28,7 @@ def products(request):#sinartisi pou servirei tin products selida tou site
 
 def product(request,id):#sinartisi pou servirei tin products selida tou site
     if request.method == 'POST':
-        product_by_id=Product.objects.get(id=id)#
+        product_by_id=Product.objects.get(id=id)#get product by id
         product_by_id.delete()
         messages.success(request,f"Product ({product_by_id.title}) deleted successfully")
         return redirect("products")
@@ -46,6 +46,8 @@ def addproduct(request):
         sub_category=request.POST["sub_category"].capitalize()
         try:
             indoors=request.POST["indoors"]#i try to take the ckecked indoors and if the user doesnt click it i take it as false
+            if indoors=="":
+                indoors=True
         except:
             indoors=False
         image=request.FILES["image"]#because it is an file i take it from FILES
@@ -63,7 +65,48 @@ def addproduct(request):
     elif request.method == 'GET':
         return render(request,"addproduct.html")
 
-
+def updateproduct(request,product_id):
+    product_by_id=Product.objects.get(id=product_id)#get product by id
+    if request.method == 'POST':
+        title=request.POST["title"]
+        price=request.POST["price"]
+        description=request.POST["description"]
+        category=request.POST["category"].capitalize()#i capitalized the first letter it because if it is not capitalized it will make a new category
+        sub_category=request.POST["sub_category"].capitalize()
+        try:
+            indoors=request.POST["indoors"]#i try to take the ckecked indoors and if the user doesnt click it i take it as false
+            if indoors=="":
+                indoors=True
+        except:
+            indoors=False
+        try:    
+            image=request.FILES["image"]#because it is an file i take it from FILES
+        except:
+            image=None   
+        if image!=None:     
+            upload_folder = os.path.join(settings.BASE_DIR, 'static\images')#the folder i will save it
+            file_path=os.path.join(upload_folder,image.name)#where it will save it
+            if not os.path.exists(upload_folder):#if the folder doesnt exist create one in order to not have errors
+                os.makedirs(upload_folder)
+            with open(file_path, 'wb+') as destination: #i save the file using chunks that posted because the form i made send chunks
+                for chunk in image.chunks():
+                    destination.write(chunk)
+        print(title,indoors)
+        product_by_id.title=title
+        product_by_id.price=price
+        product_by_id.description=description
+        product_by_id.category=category
+        product_by_id.sub_category=sub_category
+        product_by_id.indoors=indoors
+        if image!=None:
+            product_by_id.image="static/images/"+image.name
+        product_by_id.save()    
+        messages.success(request, f'Product ({title}) update successfully !!')
+        return redirect("products")
+    elif request.method == 'GET':
+       
+        # print(product_by_id)
+        return  render(request,"addproduct.html",{"product":product_by_id})
 
 def search(request):#sinartisi pou servirei tin products selida tou site
     # if the user search a word that includes indoors or outdoors it will search for True or False otherwise if the title, description, category and sub category contains the keyword 
@@ -91,6 +134,8 @@ def add_to_cart(request, product_id):
         cart[product_id] = quantity
     request.session['cart'] = cart
     return redirect('cart_view')
+
+
 
 def cart_view(request):
     cart = request.session.get('cart', {})
@@ -173,4 +218,15 @@ def update_profile(request):
     else:
         form = ProfileUpdateForm(instance=request.user)
     return render(request, 'profile.html', {'form': form})
+
+def rating(request):
+   
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        username=data["username"]
+        rating=data["rating"]
+        product_id=data["product_id"]
+        print(username,rating,product_id)
+        Rating.objects.create(username=username,rating=rating,product_id=product_id)
+        return JsonResponse({"status":"success"}, content_type="application/json")
 
