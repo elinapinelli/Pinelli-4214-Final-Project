@@ -18,9 +18,11 @@
                 <img src="{{ item.product.image.url }}" alt="{{ item.product.title }}">
                 <div class="cart-details">
                     <h3>{{ item.product.title }}</h3>
+                    
                     <p>Price: {{ item.product.price }} €</p>
                     <p>Quantity: {{ item.quantity }}</p>
                     <p>Total for this product: {{ item.total_price }} €</p>  <!-- Displaying total for this product -->
+                    
                     <form method="POST" action="/cart/remove/{{ item.product.id }}/">
                         {% csrf_token %}
                         <button type="submit" class="btn">Remove</button>

@@ -232,10 +232,7 @@ button:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
 }
 
-/* Styling for "empty cart" message when it's inside the cart-items section */
-.cart-items p {
-    display: none; /* Hide the original message */
-}
+
 
 .cart-items .empty-cart-message {
     display: block; /* Ensure the new styled message is visible */

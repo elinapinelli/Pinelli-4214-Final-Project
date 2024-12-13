@@ -35,22 +35,42 @@
                  
                     
                     <span onclick="rating_stars('{{ user.username }}','{{ product.id }}',1)"
+                        {% if rating < 1 %}
                           class="star">★
+                        {% else %}
+                            class="{{rating_class}}">★
+                        {% endif %}
                     </span>
                     <span onclick="rating_stars('{{ user.username }}','{{ product.id }}',2)"
-                          class="star">★
+                        {% if rating < 2 %}
+                            class="star">★
+                        {% else %}
+                            class="{{rating_class}}">★
+                        {% endif %}
                     </span>
                     <span onclick="rating_stars('{{ user.username }}','{{ product.id }}',3)"
-                          class="star">★
+                        {% if rating < 3 %}
+                            class="star">★
+                        {% else %}
+                            class="{{rating_class}}">★
+                        {% endif %}
                     </span>
                     <span onclick="rating_stars('{{ user.username }}','{{ product.id }}',4)"
-                          class="star">★
+                        {% if rating < 4 %}
+                            class="star">★
+                        {% else %}
+                            class="{{rating_class}}">★
+                        {% endif %}
                     </span>
                     <span onclick="rating_stars('{{ user.username }}','{{ product.id }}',5)"
-                          class="star">★
+                        {% if rating < 5 %}
+                            class="star">★
+                        {% else %}
+                            class="{{rating_class}}">★
+                        {% endif %}
                     </span>
                     <h3 id="output">
-                          Rating is: 0/5
+                          Rating is: {{ rating }}/5
                       </h3>
                 </div>
                 {% endif %}

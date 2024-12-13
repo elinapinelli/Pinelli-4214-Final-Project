@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse,JsonResponse #HttpResponse-> metatrepei ta keimena se html
 from .models import Product,Rating
-from django.db.models import Q
+from django.db.models import Q,Avg
 from django.contrib.auth.decorators import login_required
 from .forms import ProfileUpdateForm
 import json
@@ -12,7 +12,16 @@ from django.contrib import messages
 # Create your views here.
 
 def home(request):#sinartisi pou servirei tin kentriki selida tou site
-    return render(request,"home.html")
+    # group by producy id and i find the average rating. Then i sort them desceding and then i keep the first 3 
+    best_average_ratings=Rating.objects.values("product_id").annotate(avg_rating=Avg("rating")).order_by("-avg_rating")[:3]
+    # i take the first 3 product id in a list
+    top_product_ids=[]
+    for rating in best_average_ratings:
+        top_product_ids.append(rating["product_id"])
+    print(top_product_ids)
+    # i take from product array the products with their id
+    top_products=Product.objects.filter(id__in=top_product_ids)
+    return render(request,"home.html",{"top_products":top_products})
 
 def about(request):#sinartisi pou servirei tin kentriki selida tou site
     return render(request,"about.html")
@@ -35,7 +44,15 @@ def product(request,id):#sinartisi pou servirei tin products selida tou site
 
     if request.method == 'GET':
         product_by_id=Product.objects.get(id=id)#i take from my database the id that the URL has    
-        return render(request,"product.html",{"product":product_by_id})
+        try:
+            rating_by=Rating.objects.get(username=request.user.username,product_id=id)#get rating by username, product_id
+            # it keeps the rating of the user that is logged in but if the user has not put a rating yet it is empty 
+        except:
+            rating_by=None
+        if rating_by==None:
+            return render(request,"product.html",{"product":product_by_id,"rating":0,"rating_class":"star"}) #if there is not a rating it returns 0
+        stars_str=["zero","one","two","three","four","five"]
+        return render(request,"product.html",{"product":product_by_id,"rating":int(rating_by.rating),"rating_class":"star "+stars_str[int(rating_by.rating)]}) #it takes the stars thar are string and send to html as rating class
 
 def addproduct(request):
     if request.method == 'POST':
@@ -139,54 +156,25 @@ def add_to_cart(request, product_id):
 
 def cart_view(request):
     cart = request.session.get('cart', {})
-    print("Cart contents:", cart)  # Debugging line
     cart_items = []
     total_price = 0
-    total_quantity = 0
+    total_quantity = 0  # To store the total quantity of all products
 
     for product_id, quantity in cart.items():
         product = Product.objects.get(id=product_id)
-        total_for_product = product.price * quantity
-        total_price += total_for_product
-        total_quantity += quantity
         cart_items.append({
             'product': product,
             'quantity': quantity,
-            'total_price': total_for_product,
+            'total_price': product.price * quantity,  # Total price for this item
         })
+        total_price += product.price * quantity
+        total_quantity += quantity  # Add the quantity of this product to total quantity
 
-    context = {
+    return render(request, 'order.html', {
         'cart': cart_items,
         'total_price': total_price,
-        'total_quantity': total_quantity,
-    }
-    return render(request, "order.html", context)
-
-def update_cart_quantity(request, product_id):
-    # Get cart from session
-    cart = request.session.get('cart', {})
-    
-    # Get the new quantity from POST
-    quantity = int(request.POST.get('quantity', 1))
-    
-    # Update cart quantity
-    if product_id in cart:
-        cart[product_id] = quantity  # Update the quantity
-    request.session['cart'] = cart  # Save the cart back to session
-
-    # Retrieve the product's price
-    product = get_object_or_404(Product, id=product_id)
-    total_price = product.price * quantity
-
-    # Return the updated price and quantity as JSON
-    return JsonResponse({
-        'status': 'success',
-        'new_quantity': quantity,
-        'new_total_price': total_price,
-        'product_price': product.price,
+        'total_quantity': total_quantity,  # Passing total quantity to the template
     })
-
-
 
 
 def remove_from_cart(request, product_id):
@@ -254,8 +242,17 @@ def rating(request):
         data = json.loads(request.body)
         username=data["username"]
         rating=data["rating"]
-        product_id=data["product_id"]
-        print(username,rating,product_id)
-        Rating.objects.create(username=username,rating=rating,product_id=product_id)
+        product_id=int(data["product_id"])
+        # if there is already a rating, update it otherwise create a new one 
+        try:
+            rating_by=Rating.objects.get(username=username,product_id=product_id)#get rating by username, product_id
+        except:
+            rating_by=None
+        
+        if rating_by==None:
+            Rating.objects.create(username=username,rating=rating,product_id=product_id)
+        else:
+            rating_by.rating=rating
+            rating_by.save()
         return JsonResponse({"status":"success"}, content_type="application/json")
 

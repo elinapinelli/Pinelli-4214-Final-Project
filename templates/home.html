@@ -20,34 +20,18 @@
     <div class="container">
         <h2 class="text-center mb-4">Popular Products</h2>
         <div class="row">
-            <!-- Product 1 -->
+        {% for product in top_products %}
             <div class="col-md-4">
                 <div class="product-card">
-                    <img src="/static/images/flower1.jpg" alt="Flower" class="img-fluid">
-                    <h3 class="product-title">Rose Bouquet</h3>
-                    <p class="product-price">$15.99</p>
-                    <a href="/product/rose-bouquet" class="btn btn-primary">View Details</a>
+                    <img src="{{ product.image }}" alt="Flower" class="img-fluid">
+                    <h3 class="product-title">{{ product.title }}</h3>
+                    <p class="product-price">{{ product.price }}€</p>
+                    <a href="/product/{{ product.id }}/" class="btn btn-primary">View Details</a>
                 </div>
             </div>
-            <!-- Product 2 -->
-            <div class="col-md-4">
-                <div class="product-card">
-                    <img src="/static/images/pot1.jpg" alt="Pot" class="img-fluid">
-                    <h3 class="product-title">Decorative Pot</h3>
-                    <p class="product-price">$12.99</p>
-                    <a href="/product/decorative-pot" class="btn btn-primary">View Details</a>
-                </div>
-            </div>
-            <!-- Product 3 -->
-            <div class="col-md-4">
-                <div class="product-card">
-                    <img src="/static/images/garden-decor.jpg" alt="Garden Decor" class="img-fluid">
-                    <h3 class="product-title">Garden Decoration</h3>
-                    <p class="product-price">$25.99</p>
-                    <a href="/product/garden-decoration" class="btn btn-primary">View Details</a>
-                </div>
-            </div>
+        {% endfor %}
         </div>
+        
     </div>
 </section>
 {% endblock %}
