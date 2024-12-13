@@ -185,19 +185,6 @@ def remove_from_cart(request, product_id):
     return redirect('cart_view')
 
 def checkout(request):
-    cart = request.session.get('cart', {})
-    cart_items = []
-    total_price = 0
-
-    for product_id, quantity in cart.items():
-        product = Product.objects.get(id=product_id)
-        cart_items.append({
-            'product': product,
-            'quantity': quantity,
-            'total_price': product.price * quantity,  # Total price for this item
-        })
-        total_price += product.price * quantity
-
     if request.method == 'POST':
         street = request.POST.get('street')
         city = request.POST.get('city')
@@ -215,6 +202,21 @@ def checkout(request):
         request.session['cart'] = {}  # Clear the cart
         messages.success(request, 'Thank you for your purchase!')
         return redirect('home')
+    
+    cart = request.session.get('cart', {})
+    cart_items = []
+    total_price = 0
+
+    for product_id, quantity in cart.items():
+        product = Product.objects.get(id=product_id)
+        cart_items.append({
+            'product': product,
+            'quantity': quantity,
+            'total_price': product.price * quantity,  # Total price for this item
+        })
+        total_price += product.price * quantity
+
+    
 
     return render(request, 'checkout.html', {
         'cart': cart_items,

@@ -1,32 +1,41 @@
 {% extends "base.html" %}
 
-{% block title %}Add Product{% endblock %}
+{% block title %}Checkout{% endblock %}
 
 {% block header %}
-<link rel="stylesheet" href="/static/css/register.css">
-
+<link rel="stylesheet" href="/static/css/checkout.css">
 {% endblock %}
 
 {% block body %}
-<h1>Checkout</h1>
+<!-- Main Content Wrapper -->
+<div class="checkout-wrapper">
+    <h1>Checkout</h1>
     <form method="POST">
         {% csrf_token %}
+        
+        <!-- Shipping Address -->
         <h2>Shipping Address</h2>
         <label for="street">Street:</label>
         <input type="text" name="street" id="street" required><br>
+        
         <label for="city">City:</label>
         <input type="text" name="city" id="city" required><br>
+        
         <label for="zip_code">Zip Code:</label>
         <input type="text" name="zip_code" id="zip_code" required><br>
 
+        <!-- Payment Details -->
         <h2>Payment Details</h2>
         <label for="card_number">Card Number:</label>
         <input type="text" name="card_number" id="card_number" maxlength="16" required><br>
+        
         <label for="expiry_date">Expiry Date (MM/YY):</label>
         <input type="text" name="expiry_date" id="expiry_date" placeholder="MM/YY" required><br>
+        
         <label for="cvv">CVV:</label>
         <input type="text" name="cvv" id="cvv" maxlength="3" required><br>
 
+        <!-- Cart Summary -->
         <h2>Cart Summary</h2>
         <ul>
             {% for item in cart %}
@@ -37,4 +46,5 @@
 
         <button type="submit">Place Order</button>
     </form>
-    {% endblock %}
+</div>
+{% endblock %}
