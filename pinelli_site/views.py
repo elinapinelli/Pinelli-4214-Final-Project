@@ -11,7 +11,7 @@ from django.contrib import messages
 
 # Create your views here.
 
-def home(request):#sinartisi pou servirei tin kentriki selida tou site
+def home(request):#function that serves the central page of the site
     # group by producy id and i find the average rating. Then i sort them desceding and then i keep the first 3 
     best_average_ratings=Rating.objects.values("product_id").annotate(avg_rating=Avg("rating")).order_by("-avg_rating")[:3]
     # i take the first 3 product id in a list
@@ -23,11 +23,11 @@ def home(request):#sinartisi pou servirei tin kentriki selida tou site
     top_products=Product.objects.filter(id__in=top_product_ids)
     return render(request,"home.html",{"top_products":top_products})
 
-def about(request):#sinartisi pou servirei tin kentriki selida tou site
+def about(request):#function that serves the about page of the site
     return render(request,"about.html")
 
-def products(request):#sinartisi pou servirei tin products selida tou site
-    product_list=Product.objects.all()#pairno ta products apo database
+def products(request):#function that serves the products page of the site
+    product_list=Product.objects.all()#i take the products from the database
     
     # I convert the data of the products from django to the list in order to pass to javascript
     products=[{"id":product.id,"title":product.title,"price":product.price,"description":product.description,"category":product.category, "sub_category":product.sub_category, "indoors": product.indoors, "image": product.image.url } for product in product_list]
@@ -35,7 +35,7 @@ def products(request):#sinartisi pou servirei tin products selida tou site
     #i give them to html and json.dumps converts the list to string
     return render(request,"products.html",{"products":product_list,"products_str":json.dumps(products)})
 
-def product(request,id):#sinartisi pou servirei tin products selida tou site
+def product(request,id):##function that serves the product page of the site
     if request.method == 'POST':
         product_by_id=Product.objects.get(id=id)#get product by id
         product_by_id.delete()
@@ -125,7 +125,7 @@ def updateproduct(request,product_id):
         # print(product_by_id)
         return  render(request,"addproduct.html",{"product":product_by_id})
 
-def search(request):#sinartisi pou servirei tin products selida tou site
+def search(request):#function that serves the search page of the site
     # if the user search a word that includes indoors or outdoors it will search for True or False otherwise if the title, description, category and sub category contains the keyword 
     keyword=request.POST["keyword"]
     if "indoors".find(keyword)>-1:
@@ -139,7 +139,7 @@ def search(request):#sinartisi pou servirei tin products selida tou site
     
     return render(request,"products.html",{"products":product_list,"products_str":json.dumps(products)})
 
-def order(request):#sinartisi pou servirei tin kentriki selida tou site
+def order(request):#function that serves the order page of the site
     return render(request,"order.html")
 
 def add_to_cart(request, product_id):
